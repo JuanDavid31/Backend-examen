@@ -2,9 +2,12 @@ package models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.ebean.*;
+import io.ebean.annotation.NotNull;
+import play.data.format.Formats.*;
 import play.data.validation.Constraints.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.*;
 
 @Entity
@@ -13,7 +16,11 @@ public class SucursalEntity extends Model implements Validatable<String> {
 
     @Id
     private int cId;
+    @NonEmpty
+    @NotNull
+    @Size(min = 3)
     private String dNombre;
+    @NonEmpty @NotNull @Size(min = 3)
     private String aDireccion;
     @JsonManagedReference
     private List<ProductoEntity> productos;

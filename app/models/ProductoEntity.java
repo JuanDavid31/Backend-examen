@@ -2,9 +2,12 @@ package models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.ebean.*;
+import io.ebean.annotation.NotNull;
+import play.data.format.Formats.*;
 import play.data.validation.Constraints.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "producto")
@@ -12,10 +15,18 @@ public class ProductoEntity extends Model implements Validatable<String> {
 
     @Id
     private int cId;
+    @NonEmpty
+    @NotNull
+    @Size(min = 3)
     private String dNombre;
     private String dUrlFoto;
+    @NonEmpty
+    @NotNull @Size(min = 3)
     private String fLimite;
+    @NotNull
     private double precio;
+    @NonEmpty
+    @NotNull @Size(min = 3)
     private String ingredientes;
     @JsonBackReference
     private SucursalEntity sucursal;

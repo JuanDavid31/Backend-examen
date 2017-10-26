@@ -63,16 +63,17 @@ public class ProductoController extends Controller {
     }
 
     private static File subir(Http.MultipartFormData<File> body){
-        FilePart<File> archivo = body.getFiles().get(0);
-        if (fotoValida(archivo)){
-            return  archivo.getFile();
+        FilePart<File> foto = body.getFiles().get(0);
+        if (formatoValido(foto)){
+            return  foto.getFile();
         }else {
             return null;
         }
     }
 
-    private static boolean fotoValida(FilePart<File> archivo){ // hay que añadir más formatos
-        return archivo != null && (archivo.getFilename().endsWith(".jpg") || archivo.getFilename().endsWith(".jpeg"));
+    private static boolean formatoValido(FilePart<File> archivo){
+        String formato = archivo.getFilename().toLowerCase();
+        return archivo != null && (formato.endsWith(".jpg") || formato.endsWith(".jpeg") || formato.endsWith(".gif") || formato.endsWith(".png") || formato.endsWith(".svg") || formato.endsWith(".bmp"));
     }
 
     private static Map alojarEnCloudDinary(File cancion) throws IOException {

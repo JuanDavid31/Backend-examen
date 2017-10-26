@@ -3,7 +3,11 @@ package models;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.ebean.*;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
+
+import io.ebean.annotation.NotNull;
+import play.data.format.Formats.*;
 import play.data.validation.Constraints.*;
 
 @Entity
@@ -12,6 +16,7 @@ public class CategoriaEntity  extends Model implements Validatable<String>{
 
     @Id
     private int cId;
+    @NonEmpty @NotNull @Size(min = 3)
     private String dNombre;
     @JsonManagedReference
     private List<ProductoEntity> productos;
