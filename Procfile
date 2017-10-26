@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/Backend-examen -Dhttp.port=${PORT}
+web: target/universal/stage/bin/backend-examen -Dhttp.port=${PORT}
