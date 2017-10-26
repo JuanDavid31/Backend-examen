@@ -4,13 +4,13 @@
 # --- !Ups
 
 create table categoria (
-  c_id                          integer auto_increment not null,
+  c_id                          integer serial not null,
   d_nombre                      varchar(255) not null,
   constraint pk_categoria primary key (c_id)
 );
 
 create table producto (
-  c_id                          integer auto_increment not null,
+  c_id                          integer serial not null,
   d_nombre                      varchar(255) not null,
   d_url_foto                    varchar(255),
   f_limite                      varchar(255) not null,
