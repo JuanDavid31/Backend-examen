@@ -1,4 +1,4 @@
-name := """Backend-examen"""
+name := """backend-examen"""
 
 version := "1.0-SNAPSHOT"
 
