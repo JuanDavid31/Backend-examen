@@ -27,7 +27,7 @@ public class ProductoEntity extends Model implements Validatable<String> {
     private int nPrecio;
     @NonEmpty
     @NotNull @Size(min = 3)
-    private String ingredientes;
+    private String aIngredientes;
     @JsonBackReference
     private SucursalEntity sucursal;
     @JsonBackReference
@@ -80,12 +80,12 @@ public class ProductoEntity extends Model implements Validatable<String> {
     }
 
     @Column(name = "a_ingredientes")
-    public String getIngredientes() {
-        return ingredientes;
+    public String getaIngredientes() {
+        return aIngredientes;
     }
 
-    public void setIngredientes(String ingredientes) {
-        this.ingredientes = ingredientes;
+    public void setaIngredientes(String ingredientes) {
+        this.aIngredientes = ingredientes;
     }
 
     @ManyToOne(optional = false) @JoinColumn(name = "c_id_sucursal")
@@ -126,7 +126,7 @@ public class ProductoEntity extends Model implements Validatable<String> {
             return "Fecha no puede estar vacia";
         }else if(nPrecio == 0 || nPrecio < 0){
             return "Precio incorrecto";
-        }else if(ingredientes == null || ingredientes.trim().equalsIgnoreCase("")){
+        }else if(aIngredientes == null || aIngredientes.trim().equalsIgnoreCase("")){
             return "Debe haber al menos 1 ingrediente";
         }
         return null;
