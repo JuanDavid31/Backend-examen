@@ -110,7 +110,7 @@ public class ApiController extends Controller {
         JsonNode json = request().body().asJson();
         ProductoEntity producto = jsonAEntidadProducto(json, new ProductoEntity());
         String mensaje = producto.validate();
-        if(mensaje == null){
+        if(mensaje == null){ System.out.println(producto.toString());
             ProductoController.adicionarSucursalAProducto(idSucursal, producto);
             ProductoController.adicionarCategoriaAProducto(idCategoria, producto);
             ProductoController.guardar(producto);
@@ -122,12 +122,12 @@ public class ApiController extends Controller {
     private ProductoEntity jsonAEntidadProducto(JsonNode json, ProductoEntity producto){
         String nombre = json.findPath("nombre").textValue();
         String fecha = json.findPath("fecha").textValue();
-        int precio = json.findPath("precio").asInt();
+        int precio = json.findPath("precio").asInt(); //Esto puede traer problemas!!!
         String ingredientes = json.findPath("ingredientes").textValue();
         producto.setdNombre(nombre);
         producto.setfLimite(fecha);
         producto.setnPrecio(precio);
-        producto.setIngredientes(ingredientes);
+        producto.setaIngredientes(ingredientes);
         return producto;
     }
 

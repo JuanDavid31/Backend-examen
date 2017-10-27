@@ -113,6 +113,8 @@ public class ProductoEntity extends Model implements Validatable<String> {
                 ", dNombre='" + dNombre + '\'' +
                 ", dUrlFoto='" + dUrlFoto + '\'' +
                 ", fLimite='" + fLimite + '\'' +
+                ", nPrecio=" + nPrecio +
+                ", aIngredientes='" + aIngredientes + '\'' +
                 ", sucursal=" + sucursal +
                 ", categoria=" + categoria +
                 '}';
