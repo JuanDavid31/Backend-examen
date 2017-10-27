@@ -25,22 +25,26 @@ public class ApiController extends Controller {
 
     public Result adicionarSucursal(){
         JsonNode json = request().body().asJson();
-        String nombre = json.findPath("nombre").textValue();
-        SucursalEntity sucursal = new SucursalEntity();
-        sucursal.setdNombre(nombre);
+        SucursalEntity sucursal = jsonAEntidadSucursal(json, new SucursalEntity());
         String mensaje = sucursal.validate();
-        if(nombre == null) {
+        if(mensaje == null) {
             SucursalController.guardar(sucursal);
             return ok("Sucursal adicionado");
         }
         return badRequest(mensaje);
     }
 
+    private SucursalEntity jsonAEntidadSucursal(JsonNode json, SucursalEntity sucursal){
+        String nombre = json.findPath("nombre").textValue();
+        String direccion = json.findPath("direccion").textValue();
+        sucursal.setdNombre(nombre);
+        sucursal.setaDireccion(direccion);
+        return sucursal;
+    }
+
     public Result actualizarSucursal(int id){
         JsonNode json = request().body().asJson();
-        String nombre = json.findPath("nombre").textValue();
-        SucursalEntity sucursal = SucursalController.darSucursal(id);
-        sucursal.setdNombre(nombre);
+        SucursalEntity sucursal = jsonAEntidadSucursal(json, SucursalController.darSucursal(id));
         String mensaje = sucursal.validate();
         if(mensaje == null) {
             SucursalController.guardar(sucursal);
@@ -98,11 +102,7 @@ public class ApiController extends Controller {
 
     public Result adicionarProducto(int idSucursal, int idCategoria){
         JsonNode json = request().body().asJson();
-        String nombre = json.findPath("nombre").textValue();
-        String fecha = json.findPath("fecha").textValue();
-        ProductoEntity producto = new ProductoEntity();
-        producto.setdNombre(nombre);
-        producto.setfLimite(fecha);
+        ProductoEntity producto = jsonAEntidadProducto(json, new ProductoEntity());
         String mensaje = producto.validate();
         if(mensaje == null){
             ProductoController.adicionarSucursalAProducto(idSucursal, producto);
@@ -111,6 +111,18 @@ public class ApiController extends Controller {
             return ok("Producto adicionado correctamente");
         }
         return badRequest(mensaje);
+    }
+
+    private ProductoEntity jsonAEntidadProducto(JsonNode json, ProductoEntity producto){
+        String nombre = json.findPath("nombre").textValue();
+        String fecha = json.findPath("fecha").textValue();
+        int precio = json.findPath("precio").asInt();
+        String ingredientes = json.findPath("ingredientes").textValue();
+        producto.setdNombre(nombre);
+        producto.setfLimite(fecha);
+        producto.setnPrecio(precio);
+        producto.setIngredientes(ingredientes);
+        return producto;
     }
 
     public Result editarProductoConUrl(int id){
