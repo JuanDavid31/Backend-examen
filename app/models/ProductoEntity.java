@@ -24,7 +24,7 @@ public class ProductoEntity extends Model implements Validatable<String> {
     @NotNull @Size(min = 3)
     private String fLimite;
     @NotNull
-    private int precio;
+    private int nPrecio;
     @NonEmpty
     @NotNull @Size(min = 3)
     private String ingredientes;
@@ -71,12 +71,12 @@ public class ProductoEntity extends Model implements Validatable<String> {
     }
 
     @Column(name = "n_precio")
-    public double getPrecio() {
-        return precio;
+    public double getnPrecio() {
+        return nPrecio;
     }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
+    public void setnPrecio(int precio) {
+        this.nPrecio = precio;
     }
 
     @Column(name = "a_ingredientes")
@@ -124,7 +124,7 @@ public class ProductoEntity extends Model implements Validatable<String> {
             return "Nombre no puede estar vacio";
         }else if(fLimite == null || fLimite.trim().equalsIgnoreCase("")){
             return "Fecha no puede estar vacia";
-        }else if(precio == 0 || precio < 0){
+        }else if(nPrecio == 0 || nPrecio < 0){
             return "Precio incorrecto";
         }else if(ingredientes == null || ingredientes.trim().equalsIgnoreCase("")){
             return "Debe haber al menos 1 ingrediente";
