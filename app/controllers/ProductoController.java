@@ -36,13 +36,11 @@ public class ProductoController extends Controller {
     public static void adicionarSucursalAProducto(int idSucursal, ProductoEntity producto){
         SucursalEntity sucursal = SucursalController.darSucursal(idSucursal);
         producto.setSucursal(sucursal);
-        guardar(producto);
     }
 
     public static void adicionarCategoriaAProducto(int idCategoria, ProductoEntity producto){
         CategoriaEntity categoria = CategoriaController.darCategoria(idCategoria);
         producto.setCategoria(categoria);
-        guardar(producto);
     }
 
     public static boolean eliminar(ProductoEntity producto){

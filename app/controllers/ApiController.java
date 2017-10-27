@@ -111,8 +111,8 @@ public class ApiController extends Controller {
         ProductoEntity producto = jsonAEntidadProducto(json, new ProductoEntity());
         String mensaje = producto.validate();
         if(mensaje == null){ System.out.println(producto.toString());
-            ProductoController.adicionarSucursalAProducto(idSucursal, producto);
-            ProductoController.adicionarCategoriaAProducto(idCategoria, producto);
+            ProductoController.adicionarSucursalAProducto(idSucursal, producto); System.out.println(producto.toString());
+            ProductoController.adicionarCategoriaAProducto(idCategoria, producto); System.out.println(producto.toString());
             ProductoController.guardar(producto);
             return ok("Producto adicionado correctamente");
         }
