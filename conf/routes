@@ -21,6 +21,8 @@ PUT    /actualizarCategoria/:id     controllers.ApiController.actualizarCategori
 
 DELETE /eliminarCategoria/:id       controllers.ApiController.eliminarCategoria(id: Int)
 
+GET    /productos.json/:id          controllers.ApiController.darProductosPorSucursal(id:Int)
+
 POST   /adicionarProducto/:idS/:idC controllers.ApiController.adicionarProducto(idS: Int, idC: Int)
 
 PUT    /editarProductoConUrl/:id   controllers.ApiController.editarProductoConUrl(id: Int)

@@ -100,6 +100,12 @@ public class ApiController extends Controller {
         return internalServerError("No se pudo eliminar la categoria, intentelo de nuevo.");
     }
 
+    public Result darProductosPorSucursal(int id){
+        SucursalEntity sucursal = SucursalController.darSucursal(id);
+        List<ProductoEntity> productos = sucursal.getProductos();
+        return ok(Json.toJson(productos));
+    }
+
     public Result adicionarProducto(int idSucursal, int idCategoria){
         JsonNode json = request().body().asJson();
         ProductoEntity producto = jsonAEntidadProducto(json, new ProductoEntity());
