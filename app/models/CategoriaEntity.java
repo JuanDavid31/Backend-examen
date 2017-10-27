@@ -31,7 +31,7 @@ public class CategoriaEntity  extends Model implements Validatable<String>{
         this.cId = cId;
     }
 
-    @Column(name = "d_nombre")
+    @Column(name = "d_nombre", unique = true)
     public String getdNombre() {
         return dNombre;
     }

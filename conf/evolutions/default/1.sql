@@ -5,16 +5,16 @@
 
 create table categoria (
   c_id                          serial not null,
-  d_nombre                      varchar(255) not null,
+  d_nombre                      varchar(255) not null UNIQUE,
   constraint pk_categoria primary key (c_id)
 );
 
 create table producto (
   c_id                          serial not null,
-  d_nombre                      varchar(255) not null,
+  d_nombre                      varchar(255) not null UNIQUE,
   d_url_foto                    varchar(255),
   f_limite                      varchar(255) not null,
-  n_precio                      double not null,
+  n_precio                      integer not null,
   a_ingredientes                varchar(255) not null,
   c_id_sucursal                 integer not null,
   c_id_categoria                integer not null,
@@ -23,7 +23,7 @@ create table producto (
 
 create table sucursal (
   c_id                          serial not null,
-  d_nombre                      varchar(255) not null,
+  d_nombre                      varchar(255) not null UNIQUE,
   a_direccion                   varchar(255) not null,
   constraint pk_sucursal primary key (c_id)
 );

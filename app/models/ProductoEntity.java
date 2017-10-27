@@ -24,7 +24,7 @@ public class ProductoEntity extends Model implements Validatable<String> {
     @NotNull @Size(min = 3)
     private String fLimite;
     @NotNull
-    private double precio;
+    private int precio;
     @NonEmpty
     @NotNull @Size(min = 3)
     private String ingredientes;
@@ -43,7 +43,7 @@ public class ProductoEntity extends Model implements Validatable<String> {
         this.cId = cId;
     }
 
-    @Column(name = "d_nombre")
+    @Column(name = "d_nombre", unique = true)
     public String getdNombre() {
         return dNombre;
     }
@@ -75,7 +75,7 @@ public class ProductoEntity extends Model implements Validatable<String> {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 
