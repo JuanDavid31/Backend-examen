@@ -69,6 +69,7 @@ public class ApiController extends Controller {
         categoria.setdNombre(nombre);
         String mensaje = categoria.validate();
         if(mensaje == null) {
+            CategoriaController.guardar(categoria);
             return ok("Categoria adicionado");
         }
         return badRequest(mensaje);
