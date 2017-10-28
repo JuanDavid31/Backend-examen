@@ -64,6 +64,7 @@ public class ApiController extends Controller {
         for(ProductoEntity producto : productos){
             ProductoController.eliminar(producto);
         }
+        SucursalController.eliminar(sucursal);
         return ok("Producto eliminado");
     }
 
