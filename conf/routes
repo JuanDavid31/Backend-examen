@@ -7,6 +7,8 @@ GET     /                           controllers.ApiController.indice()
 
 GET     /sucursales.json            controllers.ApiController.darSucursales()
 
+GET     /sucursales.json/:id        controllers.ApiController.darSucursal(id: Int)
+
 POST    /adicionarSucursal          controllers.ApiController.adicionarSucursal()
 
 PUT     /actualizarSucursal/:id     controllers.ApiController.actualizarSucursal(id: Int)

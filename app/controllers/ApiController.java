@@ -23,6 +23,11 @@ public class ApiController extends Controller {
         return ok(Json.toJson(sucursales));
     }
 
+    public Result darSucursal(int id){
+        SucursalEntity sucursal = SucursalController.darSucursal(id);
+        return ok(Json.toJson(sucursal));
+    }
+
     public Result adicionarSucursal(){
         JsonNode json = request().body().asJson();
         SucursalEntity sucursal = jsonAEntidadSucursal(json, new SucursalEntity());
