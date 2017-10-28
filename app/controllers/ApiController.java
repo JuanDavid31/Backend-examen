@@ -60,10 +60,10 @@ public class ApiController extends Controller {
 
     public Result eliminarSucursal(int id){
         SucursalEntity sucursal = SucursalController.darSucursal(id);
-        if(sucursal.delete()){
-            return ok("Sucursal eliminada");
+        for(ProductoEntity producto : sucursal.getProductos()){
+            ProductoController.eliminar(producto);
         }
-        return internalServerError("No se pudo eliminar la sucursal, intentelo de nuevo.");
+        return ok("Producto eliminado");
     }
 
     public Result darCategorias(){
