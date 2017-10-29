@@ -143,8 +143,8 @@ public class ApiController extends Controller {
         ProductoEntity producto = ProductoController.darProducto(id);
         String url = json.findPath("url").textValue();
         producto.setdUrlFoto(url);
-        ProductoController.guardar(producto);
-        return ok("Producto editado");
+        boolean editado = ProductoController.guardar(producto);
+        return ok("Producto editado: " + editado);
     }
 
     public Result editarProductoConArchivo(int id){
